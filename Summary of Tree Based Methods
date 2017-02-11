@@ -1,0 +1,60 @@
+Decision Tree
+
+Method: Binary Recursive Splitting
+Select predictor j and cutpoint s which minimizes the RSS at each iteration
+
+Advantages:
+1. Very easy to explain. In fact, they are even easier to explain than linear regression
+2. Comprehensibility so that can be used in Rule Generation problem
+3. Trees can easily handle qualitative predictors without the need to create dummy variables 
+4. No need for variable scaling
+5. Be able to deal with a small amount of missing data 
+6. Not affected by outliers
+
+Disadvantages:
+1. Low performance (Overfitting). Usually it yields a large tree (large variance but low bias)
+3. Exponential calculation growth while problem is getting bigger
+
+
+Bagging:
+
+Advantage: Averaging bootstraped trees to reduce the variance of the model 
+
+Note: These bootstraped trees are grown deep and not pruned 
+
+New Estimation: Out of Bag 
+At each bootstraping iteration, the chosen data will be treated in the bag, and the unchosen data will be treated as out of bag 
+Out-of-bag estimation will yiled the same performace as leave-one-out cros validation as long as B is sufficiently large
+
+Prediction: 
+Record the class predicted by each of the B trees, and take a majority vote
+Later, the overall prediction is the most commonly occurring class among the B predictions
+
+Variable Importance:
+For bagged regression trees, record the total amount that the RSS is decreased due to splits over a given predictor, averaged over all B trees
+For bagged classification tree, add up the total amount that the Gini index is decreased by splits over a given predictor, averaged over all B trees
+
+Disadvantages:
+1. The final bagged classifier is not a tree, and it does not have interpretabily that a single tree has 
+2. Trees might be similar to each other since some variables are dominant over each tree, so averaging any highly correlated quantities does not lead to as large of a reduction in variance
+
+Random Forest
+Decorrelate trees so reduce the variance 
+
+Method: Using m predictors to only for each bootstraping instead of all p predictors 
+
+Advantages:
+1. An effective method for estimating missing data and maintains accuracy when a large proportion of the data are missing
+2. It has methods for balancing error in class population unbalanced data sets
+3. Handle thousands of input variables without variable deletion
+4. Be able to deal with interactions
+
+Disadvantages:
+1. Less interpretability
+
+
+
+
+
+
+
